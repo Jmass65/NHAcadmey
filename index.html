@@ -1,0 +1,77 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Nuvance Academy</title>
+    <style>
+        body { font-family: Arial, sans-serif; text-align: center; padding: 20px; }
+        .test-container { max-width: 600px; margin: auto; padding: 20px; border: 1px solid #ccc; border-radius: 10px; }
+        .question { margin-bottom: 20px; }
+        .result { display: none; margin-top: 20px; }
+    </style>
+</head>
+<body>
+    <div class="test-container">
+        <h1>Security Company Test</h1>
+        <form id="test-form">
+            <div class="question">
+                <p>1. What is the primary duty of a security officer?</p>
+                <input type="radio" name="q1" value="To protect property"> To protect property<br>
+                <input type="radio" name="q1" value="To manage traffic"> To manage traffic<br>
+                <input type="radio" name="q1" value="To write reports"> To write reports<br>
+            </div>
+            <div class="question">
+                <p>2. What should you do in case of a fire emergency?</p>
+                <input type="radio" name="q2" value="Evacuate the building"> Evacuate the building<br>
+                <input type="radio" name="q2" value="Call the police"> Call the police<br>
+                <input type="radio" name="q2" value="Ignore it"> Ignore it<br>
+            </div>
+            <div class="question">
+                <p>3. How should you handle a suspicious package?</p>
+                <input type="radio" name="q3" value="Inspect it yourself"> Inspect it yourself<br>
+                <input type="radio" name="q3" value="Call the bomb squad"> Call the bomb squad<br>
+                <input type="radio" name="q3" value="Ignore it"> Ignore it<br>
+            </div>
+            <div class="question">
+                <p>4. What is the first step in the security incident response?</p>
+                <input type="radio" name="q4" value="Contain the incident"> Contain the incident<br>
+                <input type="radio" name="q4" value="Notify the authorities"> Notify the authorities<br>
+                <input type="radio" name="q4" value="Document the incident"> Document the incident<br>
+            </div>
+            <button type="button" onclick="submitTest()">Submit</button>
+        </form>
+        <div class="result" id="result">
+            <h2>Test Result</h2>
+            <p id="score"></p>
+        </div>
+    </div>
+
+    <script>
+        function submitTest() {
+            const form = document.getElementById('test-form');
+            const result = document.getElementById('result');
+            const scoreElement = document.getElementById('score');
+            const formData = new FormData(form);
+
+            let score = 0;
+
+            if (formData.get('q1') === 'To protect property') {
+                score += 1;
+            }
+            if (formData.get('q2') === 'Evacuate the building') {
+                score += 1;
+            }
+            if (formData.get('q3') === 'Call the bomb squad') {
+                score += 1;
+            }
+            if (formData.get('q4') === 'Notify the authorities') {
+                score += 1;
+            }
+
+            scoreElement.innerText = `Your score is: ${score} out of 4`;
+            result.style.display = 'block';
+        }
+    </script>
+</body>
+</html>
